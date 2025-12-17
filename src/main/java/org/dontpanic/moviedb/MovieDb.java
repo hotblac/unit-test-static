@@ -10,8 +10,6 @@ public class MovieDb {
     private final PrintStream out;
 
     public static void main(String[] args) {
-        AppState.initAppState();
-
         MovieDb db = new MovieDb(System.out);
         db.loadMovies();
         db.showMovies();

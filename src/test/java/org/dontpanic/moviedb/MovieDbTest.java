@@ -32,7 +32,7 @@ public class MovieDbTest {
     @Before
     public void setUp() {
         when(movieRepository.getMovies()).thenReturn(Set.of(MOVIE_1, MOVIE_2));
-        AppState.setMovieRepository(movieRepository);
+        AppState.movieRepository = movieRepository;
     }
 
     @Test

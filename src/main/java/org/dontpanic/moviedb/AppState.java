@@ -8,27 +8,19 @@ import org.dontpanic.moviedb.repository.StarRepository;
  */
 public class AppState {
 
-    private static MovieRepository movieRepository;
-    private static StarRepository starRepository;
+    static MovieRepository movieRepository;
+    static StarRepository starRepository;
+
+    static {
+        AppState.movieRepository = new MovieRepository();
+        AppState.starRepository = new StarRepository();
+    }
 
     public static MovieRepository getMovieRepository() {
         return movieRepository;
     }
 
-    public static void setMovieRepository(MovieRepository movieRepository) {
-        AppState.movieRepository = movieRepository;
-    }
-
     public static StarRepository getStarRepository() {
         return starRepository;
-    }
-
-    public static void setStarRepository(StarRepository starRepository) {
-        AppState.starRepository = starRepository;
-    }
-
-    static void initAppState()  {
-        AppState.setMovieRepository(new MovieRepository());
-        AppState.setStarRepository(new StarRepository());
     }
 }

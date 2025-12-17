@@ -11,7 +11,6 @@ public class AppStateTest {
 
     @Test
     public void initAppState_inititializesRepositories() {
-        AppState.initAppState();
         MovieRepository movieRepository = AppState.getMovieRepository();
         StarRepository starRepository = AppState.getStarRepository();
 
