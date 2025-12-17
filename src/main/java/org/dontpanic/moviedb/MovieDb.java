@@ -4,13 +4,21 @@ import org.dontpanic.moviedb.entity.Movie;
 import org.dontpanic.moviedb.entity.Star;
 import org.dontpanic.moviedb.repository.MovieRepository;
 
+import java.io.PrintStream;
+
 public class MovieDb {
+    private final PrintStream out;
+
     public static void main(String[] args) {
         AppState.initAppState();
 
-        MovieDb db = new MovieDb();
+        MovieDb db = new MovieDb(System.out);
         db.loadMovies();
         db.showMovies();
+    }
+
+    public MovieDb(PrintStream out) {
+        this.out = out;
     }
 
     public void loadMovies() {
@@ -37,7 +45,7 @@ public class MovieDb {
 
     public void showMovies() {
         MovieRepository movieRepository = AppState.getMovieRepository();
-        movieRepository.getMovies().forEach(System.out::println);
+        movieRepository.getMovies().forEach(out::println);
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class MovieRepository {
 
-    private Set<Movie> movies = new HashSet<>();
+    private final Set<Movie> movies = new HashSet<>();
 
     public void addMovie(Movie movie) {
         movies.add(movie);
