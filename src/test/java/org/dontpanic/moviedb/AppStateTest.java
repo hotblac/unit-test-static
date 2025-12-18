@@ -2,15 +2,15 @@ package org.dontpanic.moviedb;
 
 import org.dontpanic.moviedb.repository.MovieRepository;
 import org.dontpanic.moviedb.repository.StarRepository;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AppStateTest {
+class AppStateTest {
 
     @Test
-    public void initAppState_inititializesRepositories() {
+    void initAppState_inititializesRepositories() {
         MovieRepository movieRepository = AppState.getMovieRepository();
         StarRepository starRepository = AppState.getStarRepository();
 

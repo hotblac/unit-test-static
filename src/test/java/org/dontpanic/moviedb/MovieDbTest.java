@@ -2,14 +2,15 @@ package org.dontpanic.moviedb;
 
 import org.dontpanic.moviedb.entity.Movie;
 import org.dontpanic.moviedb.repository.MovieRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.PrintStream;
 import java.util.Set;
@@ -17,8 +18,8 @@ import java.util.Set;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MovieDbTest {
+@ExtendWith(MockitoExtension.class)
+class MovieDbTest {
 
     private static final Movie MOVIE_1 = new Movie("Back to the Future");
     private static final Movie MOVIE_2 = new Movie("Jaws");
@@ -29,14 +30,14 @@ public class MovieDbTest {
     @Captor private ArgumentCaptor<String> outCaptor;
     @InjectMocks private MovieDb db;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         when(movieRepository.getMovies()).thenReturn(Set.of(MOVIE_1, MOVIE_2));
         AppState.movieRepository = movieRepository;
     }
 
     @Test
-    public void showMovies_loadsMoviesFromRepository() {
+    void showMovies_loadsMoviesFromRepository() {
         db.showMovies();
 
         verify(out).println(MOVIE_1);
